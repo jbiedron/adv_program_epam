@@ -1,0 +1,7 @@
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_1\Visual_Studio\CartingService\CartingService\obj\Debug\net5.0\CartingService.csproj.AssemblyReference.cache
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_1\Visual_Studio\CartingService\CartingService\obj\Debug\net5.0\CartingService.GeneratedMSBuildEditorConfig.editorconfig
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_1\Visual_Studio\CartingService\CartingService\obj\Debug\net5.0\CartingService.AssemblyInfoInputs.cache
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_1\Visual_Studio\CartingService\CartingService\obj\Debug\net5.0\CartingService.AssemblyInfo.cs
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_1\Visual_Studio\CartingService\CartingService\obj\Debug\net5.0\CartingService.csproj.CoreCompileInputs.cache
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_1\Visual_Studio\CartingService\CartingService\obj\Debug\net5.0\CartingService.MvcApplicationPartsAssemblyInfo.cs
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_1\Visual_Studio\CartingService\CartingService\obj\Debug\net5.0\CartingService.MvcApplicationPartsAssemblyInfo.cache

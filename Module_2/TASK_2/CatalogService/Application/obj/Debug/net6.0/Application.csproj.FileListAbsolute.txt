@@ -1,0 +1,15 @@
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\Application.csproj.AssemblyReference.cache
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\Application.AssemblyInfoInputs.cache
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\Application.AssemblyInfo.cs
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\Application.csproj.CoreCompileInputs.cache
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\bin\Debug\net6.0\Application.deps.json
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\bin\Debug\net6.0\Application.dll
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\bin\Debug\net6.0\Application.pdb
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\bin\Debug\net6.0\Domain.dll
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\bin\Debug\net6.0\Domain.pdb
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\Application.csproj.CopyComplete
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\Application.dll
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\refint\Application.dll
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\Application.pdb
+C:\__DEV\Menmtoring_program_ADV\Module_02\TASK_2\CatalogService\Application\obj\Debug\net6.0\ref\Application.dll

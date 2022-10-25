@@ -1,0 +1,12 @@
+1) I used clean arch style as it was told.
+2) For persistance i used EntityFramework just for ORM benefits. 
+3) This is not example of rich domain model, even some domain services are moved to application services (most validation etc, )
+4) Used MediatR for interaction between UI and Application/Infrastructure because i like Command/Query
+5) Because Command/Query is used the lack of rich domain model was choosen.
+
+
+Thinks to consider:
+- entities can be changed to c# value object (but was not sure if name is unique - missing in task description)
+- no rich domain, but for agregates we could use automapper and use it in application service layer
+- commands (placeholders) can be modelled with simple POCO or DTO or Entities
+- connection string is in the CatalowService API project (appsettings.json)

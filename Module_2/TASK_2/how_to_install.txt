@@ -1,0 +1,9 @@
+EF
+--
+dotnet tool install --global dotnet-ef
+cd PROJECT_ROOT
+dotnet ef migrations add Initial --project Infrastructure --startup-project CatalogService --output-dir Persistence/Migrations --verbose
+dotnet ef database update --startup-project CatalogService 
+
+SQL
+-- used SQL express that came with VS 2022 PRO
