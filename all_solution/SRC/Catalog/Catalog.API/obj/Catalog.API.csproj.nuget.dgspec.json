@@ -1,0 +1,267 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.API\\Catalog.API.csproj": {}
+  },
+  "projects": {
+    "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.API\\Catalog.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.API\\Catalog.API.csproj",
+        "projectName": "Catalog.API",
+        "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.API\\Catalog.API.csproj",
+        "packagesPath": "C:\\Users\\Jaroslaw_Biedron\\.nuget\\packages\\",
+        "outputPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Jaroslaw_Biedron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.App\\Catalog.App.csproj": {
+                "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.App\\Catalog.App.csproj"
+              },
+              "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj": {
+                "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.App\\Catalog.App.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.App\\Catalog.App.csproj",
+        "projectName": "Catalog.App",
+        "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.App\\Catalog.App.csproj",
+        "packagesPath": "C:\\Users\\Jaroslaw_Biedron\\.nuget\\packages\\",
+        "outputPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.App\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Jaroslaw_Biedron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj": {
+                "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj",
+        "projectName": "Catalog.Domain",
+        "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj",
+        "packagesPath": "C:\\Users\\Jaroslaw_Biedron\\.nuget\\packages\\",
+        "outputPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Jaroslaw_Biedron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj",
+        "projectName": "Catalog.Infrastructure",
+        "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Jaroslaw_Biedron\\.nuget\\packages\\",
+        "outputPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Jaroslaw_Biedron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.App\\Catalog.App.csproj": {
+                "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.App\\Catalog.App.csproj"
+              },
+              "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj": {
+                "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\Module_03\\all_solution\\all_solution\\SRC\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.305\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

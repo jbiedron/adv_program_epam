@@ -1,0 +1,6 @@
+0) install docker desktop
+1) install docer image 
+docker run --name redis-local -p 5002:6379 -d redis
+2) run redis cli
+docker exec -it redis-local sh
+redis-cli
