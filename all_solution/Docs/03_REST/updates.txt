@@ -1,0 +1,2 @@
+- added wrapper "PagedResponse" and its base class (to apply later)
+- level 3 of maturity is used in products by category page results.

@@ -19,7 +19,10 @@ namespace CatalogService.Controllers
             _mediator = mediator;
         }
        
-        // GET: api/<CategoriesController>
+        /// <summary>
+        /// Gets list of categories.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<List<Domain.Entities.Category>>> Get()
         {
@@ -27,7 +30,11 @@ namespace CatalogService.Controllers
             return results;
         }
 
-        // GET api/<CategoriesController>/5
+        /// <summary>
+        /// Gets single category item.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Domain.Entities.Category>> Get(int id)
         {
@@ -35,16 +42,25 @@ namespace CatalogService.Controllers
             return results;
         }
         
-        // POST api/<CategoriesController>
+        /// <summary>
+        /// Creates category.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<int>> Create(CreateCategoryCommand command)
         {
             return await _mediator.Send(command);
         }
 
-        // PUT api/<CategoriesController>/5
+        /// <summary>
+        /// Updates category data
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, UpdateCategoryCommand command)
+        public async Task<ActionResult> Update([FromRoute] int id, UpdateCategoryCommand command)
         {
             if (id != command.CategoryId)
             {
@@ -55,9 +71,13 @@ namespace CatalogService.Controllers
             return Ok();
         }
 
-        // DELETE api/<CategoriesController>/5
+        /// <summary>
+        /// Removes category.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete([FromRoute] int id)
         {
             await _mediator.Send(new DeleteCategoryCommand(id));
             return Ok();

@@ -1,0 +1,42 @@
+Home Task 
+Description
+Tasks 1 (week 1):
+
+Create REST based WEB API for Catalog Service.
+
+Functional Requirements:
+
+The following actions should be supported:
+List of categories
+List of Items (filtration by category id and pagination)
+Add category
+Add item
+Update category
+Update item
+Delete Item
+Delete category (with the related items)
+Non-functional Requirements (NFR):
+
+Testability
+All endpoints should correspond to at least the 2nd level of the maturity model. Few of the endpoints should follow the 3rd level.
+ 
+Task 2 (week 2):
+
+Create REST based WEB API for Carting Service.
+
+Functional Requirements:
+
+Version 1 - API should support the following actions:
+Get cart info.
+Input params: cart unique Key (string).
+Returns a cart model (cart key + list of cart items).
+Add item to cart.
+Input params: cart unique Key (string) + cart item model.
+Returns 200 if item was added to the cart. If there was no cart for specified key – creates it. Otherwise returns a corresponding HTTP code.
+Delete item from cart.
+Input params: cart unique key (string) and item id (int).
+Returns 200 if item was deleted, otherwise returns corresponding HTTP code.
+Version 2 – the same as Version 1 but with the following changes:
+a. Get cart info.
+Returns a list of cart items instead of cart model.
+API documentation. Each API version should have its own documentation.
