@@ -1,12 +1,12 @@
 ﻿using Application.Common;
 using Catalog.App.Common;
-using Domain.Entities;
+using Catalog.App.Products.Dto;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.App.Products.Query
 {
-    public class GetProductsByCategoryPagedQuery : PagedQueryRequest, IRequest<PagedResponse<List<Product>>>
+    public class GetProductsByCategoryPagedQuery : PagedQueryRequest, IRequest<PagedResponse<List<ProductDto>>>
     {
         public GetProductsByCategoryPagedQuery(int categoryId, int pageNo, int pageSize) : base(pageNo, pageSize)
         {
@@ -16,7 +16,7 @@ namespace Catalog.App.Products.Query
         public int CategoryId { get; private set; }
     }
 
-    public class GetProductByIdQueryHandler : IRequestHandler<GetProductsByCategoryPagedQuery, PagedResponse<List<Product>>>
+    public class GetProductByIdQueryHandler : IRequestHandler<GetProductsByCategoryPagedQuery, PagedResponse<List<ProductDto>>>
     {
         private readonly IApplicationDbContext _context;
 
@@ -25,7 +25,7 @@ namespace Catalog.App.Products.Query
             this._context = context;
         }
 
-        public async Task<PagedResponse<List<Product>>> Handle(GetProductsByCategoryPagedQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResponse<List<ProductDto>>> Handle(GetProductsByCategoryPagedQuery request, CancellationToken cancellationToken)
         {
 
             var pagedData = await this._context.Products
@@ -38,7 +38,7 @@ namespace Catalog.App.Products.Query
                 .Where(p => p.Category.CategoryId == request.CategoryId)
                 .CountAsync();
 
-            var results = new PagedResponse<List<Product>>(pagedData, totalCount, request.PageNo, request.PageSize);
+            var results = new PagedResponse<List<ProductDto>>(pagedData.Select(p => new ProductDto(p)).ToList(), totalCount, request.PageNo, request.PageSize);
             return results;
         }
     }

@@ -1,5 +1,7 @@
-using CartingService.BLL;
+using Carting.API.Extensions;
 using CartingService.DAL.Repository;
+using CartingService.Service;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using System.Reflection;
@@ -9,6 +11,22 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddApiVersioningConfigured();
+
+/*
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+
+    // Set a default version when it's not provided,
+    // e.g., for backward compatibility when applying versioning on existing APIs
+    options.AssumeDefaultVersionWhenUnspecified = true;
+
+    // ReportApiVersions will return the "api-supported-versions" and "api-deprecated-versions" headers.
+    options.ReportApiVersions = true;
+});*/
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -35,7 +53,7 @@ builder.Services.AddSingleton<ConnectionMultiplexer>(sp =>
     return ConnectionMultiplexer.Connect(configuration);
 });
 builder.Services.AddTransient<ICartingRespository, RedisCartingRespository>();
-builder.Services.AddTransient<CartBO>();
+builder.Services.AddTransient<CartService>();
 
 var app = builder.Build();
 

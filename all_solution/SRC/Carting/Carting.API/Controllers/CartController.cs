@@ -1,69 +1,40 @@
-﻿using CartingService.BLL;
-using CartingService.DAL.Entities;
+﻿
+using Carting.API.DTO;
+using CartingService.Service;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
 namespace CartingService.Controllers
 {
-    [Route("api")]
-    [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/[controller]")]                                     // Keep the existing route serving a default version (backward compatible).
+    [Route("api/v{version:apiVersion}/[controller]")]             // uncommenting this will stop swagger from working - conflict in mapping
     public class CartController : ControllerBase
     {
-        private readonly CartBO _cartBO;
+        private readonly CartService _cartService;
 
-        public CartController(CartBO cartBO)
+        public CartController(CartService cartService)
         {
-            _cartBO = cartBO;
+            _cartService = cartService;
         }
 
-        /// <summary>
-        /// Gets single cart item by key. Returns cart key and list of items.
-        /// </summary>
-        /// <param name="externalCartId"></param>
-        /// <returns></returns>
-        [HttpGet("v1/[controller]/{externalCartId}")]
-        public async Task<ActionResult<Cart>> GetAsync([FromRoute] string externalCartId)
+        [HttpGet("{externalCartId}")]
+        public async Task<ActionResult<CartDto>> GetAsync([FromRoute] string externalCartId)
         {
-            var cart = await _cartBO.GetAsync(externalCartId);
+            var cart = await _cartService.GetAsync(externalCartId);
             return Ok(cart);
         }
 
-        /// <summary>
-        /// Gets single cart item by key. Returns list of cart items only.
-        /// </summary>
-        /// <param name="externalCartId"></param>
-        /// <returns></returns>
-        [HttpGet("v2/[controller]/{externalCartId}")]
-        public async Task<ActionResult<List<CartItem>>> GetAsyncV2([FromRoute] string externalCartId)
+        [HttpPost("{externalCartId}")]
+        public async Task<ActionResult<int>> AddCartItem([FromRoute] string externalCartId, CartItemDto cartItem)
         {
-            var cart = await _cartBO.GetAsync(externalCartId);
-            return Ok(cart.Items);
-        }
-
-
-        /// <summary>
-        /// Adds the cart item to cart.
-        /// </summary>
-        /// <param name="externalCartId"></param>
-        /// <param name="cartItem"></param>
-        /// <returns></returns>
-        [HttpPost("v1/[controller]/{externalCartId}")]
-        public async Task<ActionResult<int>> AddCartItem([FromRoute] string externalCartId, CartItemBO cartItem)
-        {
-            var result = await _cartBO.AddToCart(externalCartId, cartItem);
+            var result = await _cartService.AddToCart(externalCartId, cartItem);
             return Ok(result);       
         }
 
-        /// <summary>
-        /// Removes cart item from the cart.
-        /// </summary>
-        /// <param name="externalCartId"></param>
-        /// <param name="externalCartItemId"></param>
-        /// <returns></returns>
-        [HttpDelete("v1/[controller]/{externalCartId}/{externalCartItemId}")]
+        [HttpDelete("{externalCartId}/{externalCartItemId}")]
         public async Task<ActionResult> DeleteCartItem([FromRoute] string externalCartId, [FromRoute] string externalCartItemId)
         {
-            var result = await _cartBO.RemoveFromCart(externalCartId, externalCartItemId);
+            var result = await _cartService.RemoveFromCart(externalCartId, externalCartItemId);
             return Ok(result);
         }
     }

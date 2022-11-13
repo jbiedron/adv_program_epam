@@ -1,6 +1,6 @@
 ﻿using Application.Categories.Query;
 using Application.Category.Command;
-
+using Catalog.App.Categories.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +24,7 @@ namespace CatalogService.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<List<Domain.Entities.Category>>> Get()
+        public async Task<ActionResult<List<CategoryDto>>> Get()
         {
             var results = await _mediator.Send(new GetAllCategoriesQuery());
             return results;
@@ -36,7 +36,7 @@ namespace CatalogService.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Domain.Entities.Category>> Get(int id)
+        public async Task<ActionResult<CategoryDto>> Get(int id)
         {
             var results = await _mediator.Send(new GetCategoryByIdQuery(id));
             return results;

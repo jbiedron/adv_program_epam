@@ -2,10 +2,11 @@
 using MediatR;
 using Application.Common;
 using Microsoft.EntityFrameworkCore;
+using Catalog.App.Categories.Dto;
 
 namespace Application.Categories.Query
 {
-    public class GetCategoryByIdQuery : IRequest<Domain.Entities.Category>
+    public class GetCategoryByIdQuery : IRequest<CategoryDto>
     {
         public int CategoryId { get; private set; }
 
@@ -15,7 +16,7 @@ namespace Application.Categories.Query
         }
     }
 
-    public class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery, Domain.Entities.Category>
+    public class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery, CategoryDto?>
     {
         private readonly IApplicationDbContext _context;
 
@@ -24,9 +25,10 @@ namespace Application.Categories.Query
             this._context = context;
         }
 
-        public async Task<Domain.Entities.Category> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
+        public async Task<CategoryDto?> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Categories.Where(p => p.CategoryId == request.CategoryId).FirstOrDefaultAsync();
+            var cat = await _context.Categories.Where(p => p.CategoryId == request.CategoryId).FirstOrDefaultAsync();
+            return cat == null ? null : new CategoryDto(cat);
         }
     }
 }

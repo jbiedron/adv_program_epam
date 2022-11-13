@@ -1,10 +1,10 @@
 ﻿using Application.Products.Query;
 using Application.Products.Command;
-using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Catalog.App.Products.Query;
 using Catalog.App.Common;
+using Catalog.App.Products.Dto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,7 +26,7 @@ namespace CatalogService.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> Get()
+        public async Task<ActionResult<List<ProductDto>>> Get()
         {
             var results = await _mediator.Send(new GetAllProductsQuery());
             return results;

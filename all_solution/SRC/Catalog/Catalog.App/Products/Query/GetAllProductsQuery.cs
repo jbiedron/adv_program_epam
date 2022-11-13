@@ -1,16 +1,16 @@
-﻿using Domain.Entities;
-using MediatR;
+﻿using MediatR;
 using Application.Common;
 using Microsoft.EntityFrameworkCore;
+using Catalog.App.Products.Dto;
 
 namespace Application.Products.Query
 {
-    public class GetAllProductsQuery : IRequest<List<Product>>
+    public class GetAllProductsQuery : IRequest<List<ProductDto>>
     {
         // nothing to do...
     }
 
-    public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, List<Product>>
+    public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, List<ProductDto>>
     {
         private readonly IApplicationDbContext _context;
 
@@ -19,10 +19,10 @@ namespace Application.Products.Query
             this._context = context;
         }
 
-        public async Task<List<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
+        public async Task<List<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var results = await _context.Products.ToListAsync();
-            return results;
+            var prods = await _context.Products.ToListAsync();
+            return prods.Select(x => new ProductDto(x)).ToList();
         }
     }
 }
