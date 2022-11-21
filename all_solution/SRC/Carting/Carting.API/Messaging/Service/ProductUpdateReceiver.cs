@@ -30,25 +30,26 @@ namespace Carting.API.Messaging.Service
         }
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            stoppingToken.ThrowIfCancellationRequested();
-
-            var consumer = new EventingBasicConsumer(_channel);
-            consumer.Received += (ch, ea) =>
+            while (!stoppingToken.IsCancellationRequested)
             {
-                var content = Encoding.UTF8.GetString(ea.Body.ToArray());
+                var consumer = new EventingBasicConsumer(_channel);
+                consumer.Received += (ch, ea) =>
+                {
+                    var content = Encoding.UTF8.GetString(ea.Body.ToArray());
 
-                var productModel = JsonConvert.DeserializeObject<ProductModel>(content);         // product is not exact version of catalog product
-                HandleMessage(productModel);
-                _channel.BasicAck(ea.DeliveryTag, false);
-            };
-            consumer.Shutdown += OnConsumerShutdown;
-            consumer.Registered += OnConsumerRegistered;
-            consumer.Unregistered += OnConsumerUnregistered;
-            consumer.ConsumerCancelled += OnConsumerCancelled;
+                    var productModel = JsonConvert.DeserializeObject<ProductModel>(content);         // product is not exact version of catalog product
+                    HandleMessage(productModel);
+                    _channel.BasicAck(ea.DeliveryTag, false);
+                };
+                consumer.Shutdown += OnConsumerShutdown;
+                consumer.Registered += OnConsumerRegistered;
+                consumer.Unregistered += OnConsumerUnregistered;
+                consumer.ConsumerCancelled += OnConsumerCancelled;
 
-            _channel.BasicConsume(_queueName, false, consumer);
+                _channel.BasicConsume(_queueName, false, consumer);
 
-            //await Task.Delay(1000);
+                await Task.Delay(5000);
+            }
         }
 
         private void HandleMessage(ProductModel productModel) 
