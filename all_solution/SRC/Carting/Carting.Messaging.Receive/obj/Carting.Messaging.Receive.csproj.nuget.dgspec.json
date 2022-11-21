@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\__DEV\\Menmtoring_program_ADV\\GIT\\all_solution\\SRC\\Carting\\Carting.Messaging.Receive\\Carting.Messaging.Receive.csproj": {}
+  },
+  "projects": {
+    "C:\\__DEV\\Menmtoring_program_ADV\\GIT\\all_solution\\SRC\\Carting\\Carting.Messaging.Receive\\Carting.Messaging.Receive.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\__DEV\\Menmtoring_program_ADV\\GIT\\all_solution\\SRC\\Carting\\Carting.Messaging.Receive\\Carting.Messaging.Receive.csproj",
+        "projectName": "Carting.Messaging.Receive",
+        "projectPath": "C:\\__DEV\\Menmtoring_program_ADV\\GIT\\all_solution\\SRC\\Carting\\Carting.Messaging.Receive\\Carting.Messaging.Receive.csproj",
+        "packagesPath": "C:\\Users\\Jaroslaw_Biedron\\.nuget\\packages\\",
+        "outputPath": "C:\\__DEV\\Menmtoring_program_ADV\\GIT\\all_solution\\SRC\\Carting\\Carting.Messaging.Receive\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Jaroslaw_Biedron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

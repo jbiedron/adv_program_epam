@@ -9,15 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{01CB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SRC", "SRC", "{D7EFE9A3-A90E-4311-8319-6775F1410B47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carting.API", "SRC\Carting\Carting.API\Carting.API.csproj", "{A1B7C717-3AFA-458C-B017-518E7279E0EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carting.API", "SRC\Carting\Carting.API\Carting.API.csproj", "{A1B7C717-3AFA-458C-B017-518E7279E0EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "SRC\Catalog\Catalog.API\Catalog.API.csproj", "{45691C82-0EBC-43B2-9E3C-FF6F530A3D59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "SRC\Catalog\Catalog.API\Catalog.API.csproj", "{45691C82-0EBC-43B2-9E3C-FF6F530A3D59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Domain", "SRC\Catalog\Catalog.Domain\Catalog.Domain.csproj", "{CBD85276-5CBF-441A-BAF6-71E9C5962A25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Domain", "SRC\Catalog\Catalog.Domain\Catalog.Domain.csproj", "{CBD85276-5CBF-441A-BAF6-71E9C5962A25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.App", "SRC\Catalog\Catalog.App\Catalog.App.csproj", "{2AE42DDE-CAE4-4BFC-A051-30A927FCFBAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.App", "SRC\Catalog\Catalog.App\Catalog.App.csproj", "{2AE42DDE-CAE4-4BFC-A051-30A927FCFBAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Infrastructure", "SRC\Catalog\Catalog.Infrastructure\Catalog.Infrastructure.csproj", "{9EEC2F70-A12B-45EC-8D6A-2295B4963C09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Infrastructure", "SRC\Catalog\Catalog.Infrastructure\Catalog.Infrastructure.csproj", "{9EEC2F70-A12B-45EC-8D6A-2295B4963C09}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Messaging.Send", "SRC\Catalog\Catalog.Messaging.Send\Catalog.Messaging.Send.csproj", "{203BC4D5-8B82-479F-AE7A-B54E49EA51F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carting.Messaging.Receive", "SRC\Carting\Carting.Messaging.Receive\Carting.Messaging.Receive.csproj", "{9C77C392-E1C4-460B-9D8C-0F22095BA025}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{9EEC2F70-A12B-45EC-8D6A-2295B4963C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EEC2F70-A12B-45EC-8D6A-2295B4963C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EEC2F70-A12B-45EC-8D6A-2295B4963C09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{203BC4D5-8B82-479F-AE7A-B54E49EA51F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{203BC4D5-8B82-479F-AE7A-B54E49EA51F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{203BC4D5-8B82-479F-AE7A-B54E49EA51F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{203BC4D5-8B82-479F-AE7A-B54E49EA51F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C77C392-E1C4-460B-9D8C-0F22095BA025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C77C392-E1C4-460B-9D8C-0F22095BA025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C77C392-E1C4-460B-9D8C-0F22095BA025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C77C392-E1C4-460B-9D8C-0F22095BA025}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +69,8 @@ Global
 		{CBD85276-5CBF-441A-BAF6-71E9C5962A25} = {01CBCF9C-77CC-4060-86FD-A82B99EDF5E0}
 		{2AE42DDE-CAE4-4BFC-A051-30A927FCFBAC} = {01CBCF9C-77CC-4060-86FD-A82B99EDF5E0}
 		{9EEC2F70-A12B-45EC-8D6A-2295B4963C09} = {01CBCF9C-77CC-4060-86FD-A82B99EDF5E0}
+		{203BC4D5-8B82-479F-AE7A-B54E49EA51F6} = {01CBCF9C-77CC-4060-86FD-A82B99EDF5E0}
+		{9C77C392-E1C4-460B-9D8C-0F22095BA025} = {0E12F288-2962-40F8-88B7-0999BE5EEE1B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27779DB2-A3C2-42F1-B5B0-815BFB1A2E52}

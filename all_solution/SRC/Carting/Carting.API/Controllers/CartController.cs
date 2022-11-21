@@ -7,7 +7,7 @@ namespace CartingService.Controllers
 {
     [ApiVersion("1.0")]
     [Route("api/[controller]")]                                     // Keep the existing route serving a default version (backward compatible).
-    [Route("api/v{version:apiVersion}/[controller]")]             // uncommenting this will stop swagger from working - conflict in mapping
+   // [Route("api/v{version:apiVersion}/[controller]")]             // uncommenting this will stop swagger from working - conflict in mapping
     public class CartController : ControllerBase
     {
         private readonly CartService _cartService;

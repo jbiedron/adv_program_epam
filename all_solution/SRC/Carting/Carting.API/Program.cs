@@ -1,4 +1,6 @@
 using Carting.API.Extensions;
+using Carting.API.Messaging;
+using Carting.API.Messaging.Service;
 using CartingService.DAL.Repository;
 using CartingService.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -54,6 +56,11 @@ builder.Services.AddSingleton<ConnectionMultiplexer>(sp =>
 });
 builder.Services.AddTransient<ICartingRespository, RedisCartingRespository>();
 builder.Services.AddTransient<CartService>();
+
+// bg service for event receiver
+var serviceClientSettingsConfig = builder.Configuration.GetSection("RabbitMq");
+builder.Services.Configure<RabbitMqConfiguration>(serviceClientSettingsConfig);
+builder.Services.AddHostedService<ProductUpdateReceiver>();
 
 var app = builder.Build();
 

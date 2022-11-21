@@ -3,6 +3,9 @@ using CatalogService.Extensions.DependencyInjection;
 using Infrastructure.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
+using Catalog.Messaging.Send.Options;
+using Catalog.Messaging.Send.Sender;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +25,10 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddAPIServices();
 
+// rabbitmq - TODO: move it to extensions method!
+var serviceClientSettingsConfig = builder.Configuration.GetSection("RabbitMq");
+builder.Services.Configure<RabbitMqConfiguration>(serviceClientSettingsConfig);
+builder.Services.AddTransient<IProductUpdateSender, ProductUpdateSender>();
 
 var app = builder.Build();
 

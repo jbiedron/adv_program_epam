@@ -1,4 +1,5 @@
 ﻿using Application.Common;
+using Catalog.Messaging.Send.Sender;
 using MediatR;
 
 namespace Application.Products.Command
@@ -18,10 +19,12 @@ namespace Application.Products.Command
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, Unit>
     {
         private readonly IApplicationDbContext _context;
+        private readonly IProductUpdateSender _productUpdateSender;
 
-        public UpdateProductCommandHandler(IApplicationDbContext context)
+        public UpdateProductCommandHandler(IApplicationDbContext context, IProductUpdateSender productUpdateSender)
         {
             this._context = context;
+            this._productUpdateSender = productUpdateSender;
         }
 
         public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
@@ -47,6 +50,9 @@ namespace Application.Products.Command
             entity.Category = category;
 
             await _context.SaveChangesAsync(cancellationToken);
+
+            // send to eventbus
+            _productUpdateSender.SendProduct(entity);
 
             return Unit.Value;
         }
