@@ -1,5 +1,0 @@
-C:\__DEV\Menmtoring_program_ADV\GIT\all_solution\SRC\Carting\Carting.Messaging.Receive\obj\Debug\net6.0\Carting.Messaging.Receive.csproj.AssemblyReference.cache
-C:\__DEV\Menmtoring_program_ADV\GIT\all_solution\SRC\Carting\Carting.Messaging.Receive\obj\Debug\net6.0\Carting.Messaging.Receive.GeneratedMSBuildEditorConfig.editorconfig
-C:\__DEV\Menmtoring_program_ADV\GIT\all_solution\SRC\Carting\Carting.Messaging.Receive\obj\Debug\net6.0\Carting.Messaging.Receive.AssemblyInfoInputs.cache
-C:\__DEV\Menmtoring_program_ADV\GIT\all_solution\SRC\Carting\Carting.Messaging.Receive\obj\Debug\net6.0\Carting.Messaging.Receive.AssemblyInfo.cs
-C:\__DEV\Menmtoring_program_ADV\GIT\all_solution\SRC\Carting\Carting.Messaging.Receive\obj\Debug\net6.0\Carting.Messaging.Receive.csproj.CoreCompileInputs.cache

@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Infrastructure", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Messaging.Send", "SRC\Catalog\Catalog.Messaging.Send\Catalog.Messaging.Send.csproj", "{203BC4D5-8B82-479F-AE7A-B54E49EA51F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carting.Messaging.Receive", "SRC\Carting\Carting.Messaging.Receive\Carting.Messaging.Receive.csproj", "{9C77C392-E1C4-460B-9D8C-0F22095BA025}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,10 +51,6 @@ Global
 		{203BC4D5-8B82-479F-AE7A-B54E49EA51F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{203BC4D5-8B82-479F-AE7A-B54E49EA51F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{203BC4D5-8B82-479F-AE7A-B54E49EA51F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C77C392-E1C4-460B-9D8C-0F22095BA025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C77C392-E1C4-460B-9D8C-0F22095BA025}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C77C392-E1C4-460B-9D8C-0F22095BA025}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C77C392-E1C4-460B-9D8C-0F22095BA025}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,7 +64,6 @@ Global
 		{2AE42DDE-CAE4-4BFC-A051-30A927FCFBAC} = {01CBCF9C-77CC-4060-86FD-A82B99EDF5E0}
 		{9EEC2F70-A12B-45EC-8D6A-2295B4963C09} = {01CBCF9C-77CC-4060-86FD-A82B99EDF5E0}
 		{203BC4D5-8B82-479F-AE7A-B54E49EA51F6} = {01CBCF9C-77CC-4060-86FD-A82B99EDF5E0}
-		{9C77C392-E1C4-460B-9D8C-0F22095BA025} = {0E12F288-2962-40F8-88B7-0999BE5EEE1B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27779DB2-A3C2-42F1-B5B0-815BFB1A2E52}

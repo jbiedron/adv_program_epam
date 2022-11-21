@@ -1,0 +1,31 @@
+What is Message Based Architecture? What is the difference between Message Based Architecture and Event Based Architecture?’
+---------------------
+A MSB is sometimes called Message-Oriented Middleware or MOM because there’s a middle tier or middleware that acts as the broker to relay messages from producers to consumers. MOM is simply an architecture that supports sending and receiving messages.
+
+Messages and Events are different. A Message is some data sent to a specific address. In Message Driven systems, each component has a unique address other components can send messages to. Each of these components, or recipients, awaits messages and reacts to them.
+
+An Event is some data emitted from a component for anyone listening to consume.
+Event is special type of message.
+--------------------
+What is Message Broker? How do message brokers work?
+-------------------
+A message broker is software that enables applications, systems, and services to communicate with each other and exchange information. The message broker does this by translating messages between formal messaging protocols. This allows interdependent services to “talk” with one another directly, even if they were written in different languages or implemented on different platforms.
+---------------------
+When should you use message brokers?
+----------------------
+When we need scalability in communication between services
+When we need to implement asynchronous comminication
+---------------
+Name and describe any distribution pattern.
+---------------
+---------------
+What are the advantages and disadvantages of using message broker?
+---------------
+---------------
+What is the difference between Queue and Topic?
+---------------
+Queue is storage mechanism for messages
+Topic is metadata associated with one or more messages that is used when we publish and subscribe. The message is published only to specific subscribers
+---------------
+What are the typical failures in MBA? How can you address them? What is Saga pattern?
+---------------
