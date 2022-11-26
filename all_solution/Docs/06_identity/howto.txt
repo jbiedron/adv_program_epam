@@ -1,0 +1,7 @@
+Dependencies:
+
+- IdentityServer4.EntityFramework
+- IdentityServer4.EntityFramework
+- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+- Microsoft.AspNetCore.Identity.UI
+- Microsoft.EntityFrameworkCore.SqlServer
