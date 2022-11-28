@@ -1,0 +1,20 @@
+﻿Task 1.
+Set up an identity management system. 
+The Identity Management System should have the next functionality:
+
+Add/ register users with properties
+name
+password
+Add/ register system roles
+Manager
+Buyer
+Add/ register roles permissions
+Buyer: Read
+Manager: Read, Create, Update, Delete
+Generate the identity token
+Check/verify the identity token
+Note! You can look for existing solutions like https://github.com/IdentityServer/IdentityServer4 or any cloud bases IMS.
+
+
+Task 2.
+Secure Create/Update/Delete endpoints of the Catalog service to be accessible for the Manager role only. All Read(GET) endpoints shouldn’t have any access limitations.
