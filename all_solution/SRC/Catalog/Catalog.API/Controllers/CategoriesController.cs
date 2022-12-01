@@ -2,6 +2,7 @@
 using Application.Category.Command;
 using Catalog.App.Categories.Dto;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,6 +11,9 @@ namespace CatalogService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+ //   [Authorize(Policy = "BuyerRead")]
+ //   [Authorize(Policy = "ManagerFull")]
     public class CategoriesController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -48,6 +52,7 @@ namespace CatalogService.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Policy = "ManagerFull")]
         public async Task<ActionResult<int>> Create(CreateCategoryCommand command)
         {
             return await _mediator.Send(command);
@@ -60,6 +65,7 @@ namespace CatalogService.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize(Policy = "ManagerFull")]
         public async Task<ActionResult> Update([FromRoute] int id, UpdateCategoryCommand command)
         {
             if (id != command.CategoryId)
@@ -77,6 +83,7 @@ namespace CatalogService.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize(Policy = "ManagerFull")]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {
             await _mediator.Send(new DeleteCategoryCommand(id));

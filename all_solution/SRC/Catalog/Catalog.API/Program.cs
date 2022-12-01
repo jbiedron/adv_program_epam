@@ -6,6 +6,7 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Catalog.Messaging.Send.Options;
 using Catalog.Messaging.Send.Sender;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,31 @@ var serviceClientSettingsConfig = builder.Configuration.GetSection("RabbitMq");
 builder.Services.Configure<RabbitMqConfiguration>(serviceClientSettingsConfig);
 builder.Services.AddTransient<IProductUpdateSender, ProductUpdateSender>();
 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", opt =>
+    {
+        opt.RequireHttpsMetadata = false;
+        opt.Authority = "https://localhost:5000";       // Identity.Server
+        opt.Audience = "Catalog.API";                   // this is api scope
+    });
+
+builder.Services.AddAuthorization();
+/*
+builder.Services.AddAuthorization(opt => {
+    // policies provides more flexibility than only roles
+    opt.AddPolicy("BuyerRead", policyBuilder =>
+    {
+       // policyBuilder.RequireAuthenticatedUser();
+     //   policyBuilder.RequireClaim("role", "Buyer");
+        // we can add more claims based on 
+    });
+    opt.AddPolicy("ManagerFull", policyBuilder => {
+   //     policyBuilder.RequireClaim("role", "Manager");
+        // we can add more claims based on 
+    });
+});
+*/
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,6 +67,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

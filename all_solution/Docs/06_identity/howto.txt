@@ -5,3 +5,12 @@ Dependencies:
 - Microsoft.AspNetCore.Identity.EntityFrameworkCore
 - Microsoft.AspNetCore.Identity.UI
 - Microsoft.EntityFrameworkCore.SqlServer
+
+-- how to mssql + migrations
+Add-Migration InitialIdentityServerMigration -c PersistedGrantDbContext
+Add-Migration InitialIdentityServerMigration -c ConfigurationDbContext
+
+Update-Database -Context PersistedGrantDbContext
+Update-Database -Context ConfigurationDbContext
+
+
