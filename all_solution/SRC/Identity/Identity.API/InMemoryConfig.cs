@@ -16,8 +16,8 @@ namespace Identity.API
                 new IdentityResources.Profile(),
                 new IdentityResource
                 {
-                    Name = "Role",
-                    UserClaims = new List<string> { "Role" }
+                    Name = "role",
+                    UserClaims = new List<string> { "role" }
                 }
             };
 
@@ -27,23 +27,25 @@ namespace Identity.API
                 new TestUser
                 {
                     SubjectId = "a9ea0f25-b964-409f-bcce-c923266249b4",
-                    Username = "Mick",
-                    Password = "MickPassword",
+                    Username = "Jaro_Manager",
+                    Password = "JaroPassw0rd",
                     Claims = new List<Claim>
                     {
-                        new Claim("given_name", "Mick"),
-                        new Claim("family_name", "Mining")
+                        new Claim("given_name", "Jaro"),
+                        new Claim("family_name", "Biedron"),
+                        new Claim("role", "Manager")
                     }
                 },
                 new TestUser
                 {
                     SubjectId = "c95ddb8c-79ec-488a-a485-fe57a1462340",
-                    Username = "Jane",
-                    Password = "JanePassword",
+                    Username = "Jaro_Buyer",
+                    Password = "JaroPassw0rd",
                     Claims = new List<Claim>
                     {
-                        new Claim("given_name", "Jane"),
-                        new Claim("family_name", "Downing")
+                        new Claim("given_name", "Jaro"),
+                        new Claim("family_name", "Biedron"),
+                        new Claim("role", "Buyer")
                     }
                 }
             };
@@ -53,16 +55,17 @@ namespace Identity.API
             {
                new Client
                {
-                    ClientId = "company-employee",
-                    ClientSecrets = new [] { new Secret("codemazesecret".Sha512()) },
+                    ClientId = "client_api",
+                    ClientSecrets = new [] { new Secret("client_api_pass".Sha512()) },
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
-                    AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, "Catalog.API" }
+                    AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, "Catalog.API", "roles" }
                 }
             };
 
        public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
        {
-            new ApiScope("Catalog.API", "Catalog API")
+            new ApiScope("Catalog.API", "Catalog API"),
+            new ApiScope("roles", "My Roles"),
            /*
            new ApiScope("myApi.read"),
            new ApiScope("myApi.write"),
@@ -75,7 +78,11 @@ namespace Identity.API
             new ApiResource("Catalog.API", "Catalog API")
             {
                 Scopes = { "Catalog.API" }
-            } 
+            } ,
+            new ApiResource("roles", "My Roles", new[] { "role" })
+            { 
+                Scopes = { "roles" }
+            },
             /*
             new ApiResource("myApi")
             {

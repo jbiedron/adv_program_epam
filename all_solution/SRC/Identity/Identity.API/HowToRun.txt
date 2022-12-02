@@ -1,2 +1,3 @@
 ﻿From postman: 
 https://localhost:7215/
+https://localhost:7215/.well-known/openid-configuration

@@ -11,8 +11,8 @@ namespace CatalogService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
-    //  [Authorize(Roles = "Buyer")]
+    // [Authorize]
+    [Authorize(Roles = "Buyer")]
     //   [Authorize(Policy = "BuyerRead")]
     //   [Authorize(Policy = "ManagerFull")]
     public class CategoriesController : ControllerBase
