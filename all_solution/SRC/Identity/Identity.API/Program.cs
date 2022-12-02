@@ -12,7 +12,7 @@ builder.Services.AddIdentityServer()
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Hello Identity Manager!");
 
 if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
