@@ -1,0 +1,12 @@
+﻿Start Identity.API and Catalog.API
+Use postman (see screenshots).
+
+Identity Server is using InMemory configuration and adding users and roles is done thru code not api invokes.
+To fix we can integrate Identity.UI (quickstart sample) to make it work together with inmem configuration.
+
+Still need to fix accees to API - for now manager has access to all prodcuct requests and buyer has access to all categories requests - cosmetics
+ 
+https://localhost:7215/
+https://localhost:7215/.well-known/openid-configuration
+
+

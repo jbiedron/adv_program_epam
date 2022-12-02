@@ -1,4 +1,6 @@
-﻿From postman: 
+﻿Start Identity.API and Catalog.API
+Use postman (see screenshots)
+ 
 https://localhost:7215/
 https://localhost:7215/.well-known/openid-configuration
 
