@@ -12,8 +12,9 @@ namespace CatalogService.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
- //   [Authorize(Policy = "BuyerRead")]
- //   [Authorize(Policy = "ManagerFull")]
+    //  [Authorize(Roles = "Buyer")]
+    //   [Authorize(Policy = "BuyerRead")]
+    //   [Authorize(Policy = "ManagerFull")]
     public class CategoriesController : ControllerBase
     {
         private readonly IMediator _mediator;

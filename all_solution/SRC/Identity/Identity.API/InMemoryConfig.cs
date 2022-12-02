@@ -56,8 +56,32 @@ namespace Identity.API
                     ClientId = "company-employee",
                     ClientSecrets = new [] { new Secret("codemazesecret".Sha512()) },
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
-                    AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId }
+                    AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, "Catalog.API" }
                 }
             };
+
+       public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
+       {
+            new ApiScope("Catalog.API", "Catalog API")
+           /*
+           new ApiScope("myApi.read"),
+           new ApiScope("myApi.write"),
+           */
+       };
+
+        // this defines the API itself. We will give it a name myApi and mention the supported scopes as well, along with the secret. Ensure to hash this secret code. This hashed code will be saved internally within IdentityServe
+        public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
+        {
+            new ApiResource("Catalog.API", "Catalog API")
+            {
+                Scopes = { "Catalog.API" }
+            } 
+            /*
+            new ApiResource("myApi")
+            {
+                Scopes = new List<string>{ "myApi.read","myApi.write" },
+                ApiSecrets = new List<Secret>{ new Secret("supersecret".Sha256()) }
+            }*/
+        };
     }
 }

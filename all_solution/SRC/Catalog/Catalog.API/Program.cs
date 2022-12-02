@@ -35,7 +35,7 @@ builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", opt =>
     {
         opt.RequireHttpsMetadata = false;
-        opt.Authority = "https://localhost:5000";       // Identity.Server
+        opt.Authority = "https://localhost:7215";       // Identity.Server
         opt.Audience = "Catalog.API";                   // this is api scope
     });
 

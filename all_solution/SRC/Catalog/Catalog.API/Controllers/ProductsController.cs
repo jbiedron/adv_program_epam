@@ -13,7 +13,7 @@ namespace CatalogService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Manager")]
  //   [Authorize(Policy = "BuyerRead")]
  //   [Authorize(Policy = "ManagerFull")]
     public class ProductsController : ControllerBase
