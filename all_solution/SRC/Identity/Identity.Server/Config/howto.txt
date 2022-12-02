@@ -1,0 +1,11 @@
+﻿https://localhost:5000/.well-known/openid-configuration
+
+is4inmem
+is4aspid
+is4empty
+is4ef
+is4admin
+is4ui
+
+dotnet new is4inmem
+dotnet new is4admin -n Identity.ServerV2

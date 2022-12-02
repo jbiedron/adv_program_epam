@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Catalog.API</name>
+    </assembly>
+    <members>
+        <member name="M:CatalogService.Controllers.CategoriesController.Get">
+            <summary>
+            Gets list of categories.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.CategoriesController.Get(System.Int32)">
+            <summary>
+            Gets single category item.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.CategoriesController.Create(Application.Category.Command.CreateCategoryCommand)">
+            <summary>
+            Creates category.
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.CategoriesController.Update(System.Int32,Application.Category.Command.UpdateCategoryCommand)">
+            <summary>
+            Updates category data
+            </summary>
+            <param name="id"></param>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.CategoriesController.Delete(System.Int32)">
+            <summary>
+            Removes category.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.ProductsController.Get">
+            <summary>
+            Gets list of products.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.ProductsController.Get(System.Int32)">
+            <summary>
+            Gets single product.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.ProductsController.GetProductsByCategoryList(System.Int32,Catalog.App.Common.PagedQueryRequest)">
+            <summary>
+            Get products by category. Returns paged results with default page size = 20
+            </summary>
+            <param name="categoryId"></param>
+            <param name="pagedQueryRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.ProductsController.Create(Application.Products.Command.CreateProductCommand)">
+            <summary>
+            Creates product
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.ProductsController.Update(System.Int32,Application.Products.Command.UpdateProductCommand)">
+            <summary>
+            Updates product item.
+            </summary>
+            <param name="id"></param>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatalogService.Controllers.ProductsController.Delete(System.Int32)">
+            <summary>
+            Removes product item.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

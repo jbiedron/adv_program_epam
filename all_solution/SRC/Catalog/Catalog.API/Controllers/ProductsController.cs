@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Catalog.App.Products.Query;
 using Catalog.App.Common;
 using Catalog.App.Products.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +13,11 @@ namespace CatalogService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Buyer, Manager")]
+    //[Authorize]
+    //[Authorize(Roles = "Manager")]
+    //   [Authorize(Policy = "BuyerRead")]
+    //   [Authorize(Policy = "ManagerFull")]
     public class ProductsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -66,6 +72,8 @@ namespace CatalogService.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "Manager")]
+        //      [Authorize(Policy = "ManagerFull")]
         public async Task<ActionResult<int>> Create(CreateProductCommand command)
         {
             return await _mediator.Send(command);
@@ -78,6 +86,8 @@ namespace CatalogService.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Manager")]
+        //      [Authorize(Policy = "ManagerFull")]
         public async Task<ActionResult> Update([FromRoute] int id, UpdateProductCommand command)
         {
             if (id != command.ProductId)
@@ -95,6 +105,8 @@ namespace CatalogService.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Manager")]
+        //      [Authorize(Policy = "ManagerFull")]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {
             await _mediator.Send(new DeleteProductCommand(id));
