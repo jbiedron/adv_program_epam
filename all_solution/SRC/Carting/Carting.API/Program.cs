@@ -5,10 +5,12 @@ using CartingService.DAL.Repository;
 using CartingService.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using StackExchange.Redis;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
@@ -28,7 +30,6 @@ builder.Services.AddApiVersioning(options =>
     options.ReportApiVersions = true;
 });*/
 
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -36,6 +37,24 @@ builder.Services.AddSwaggerGen(options =>
     // using System.Reflection;
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Protected API", Version = "v1" });
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows
+        {
+            AuthorizationCode = new OpenApiOAuthFlow
+            {
+                AuthorizationUrl = new Uri("https://localhost:5000/connect/authorize"),
+                TokenUrl = new Uri("https://localhost:5000/connect/token"),
+                Scopes = new Dictionary<string, string>
+                {
+                    {"Catalog.API", "Catalog.API"}
+                }
+            }
+        }
+    });
 });
 
 

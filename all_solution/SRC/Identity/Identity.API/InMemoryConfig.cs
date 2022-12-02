@@ -56,10 +56,22 @@ namespace Identity.API
                new Client
                {
                     ClientId = "client_api",
-                    ClientSecrets = new [] { new Secret("client_api_pass".Sha512()) },
+                    ClientSecrets = new [] { new Secret("client_api_secret".Sha512()) },
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
                     AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, "Catalog.API", "roles" }
-                }
+                },
+               new Client
+               {
+                    ClientId = "client_api_swagger",
+                    ClientName = "client_api_swagger",
+                    ClientSecrets = {new Secret("client_api_swagger_secret".Sha256())}, // change me!
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
+                    RedirectUris = {"https://localhost:7082/swagger/oauth2-redirect.html"},
+                    AllowedCorsOrigins = {"https://localhost:7082"},
+                    AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, "Catalog.API", "roles" }
+               }
             };
 
        public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]

@@ -1,0 +1,6 @@
+identity -> check swagger integration !!!
+add swagger !!!
+fix permissions (policy remove)
+custom authorization filter !!
+
+https://www.scottbrady91.com/identity-server/aspnet-core-swagger-ui-authorization-using-identityserver4

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Catalog.Messaging.Send.Options;
 using Catalog.Messaging.Send.Sender;
 using Microsoft.IdentityModel.Tokens;
+using Catalog.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,28 @@ builder.Services.AddSwaggerGen(options =>
     // using System.Reflection;
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+
+  //  options.SwaggerDoc("v1", new OpenApiInfo { Title = "Protected API", Version = "v1" });
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows
+        {
+            AuthorizationCode = new OpenApiOAuthFlow
+            {
+                AuthorizationUrl = new Uri("https://localhost:7215/connect/authorize"),
+                TokenUrl = new Uri("https://localhost:7215/connect/token"),
+                Scopes = new Dictionary<string, string>
+                {
+                    //  { IdentityServerConstants.StandardScopes.OpenId, "Catalog.API", "roles" 
+                    {"Catalog.API", "Catalog.API"},
+                    {"openid", "openid"},
+                    {"roles", "roles"}
+                }
+            }
+        }
+    });
+    options.OperationFilter<AuthorizeCheckOperationFilter>();
 });
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
@@ -62,7 +85,15 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+
+        options.OAuthClientId("client_api_swagger");
+        options.OAuthAppName("Catalog API - Swagger");
+        options.OAuthUsePkce();
+    });
 }
 
 app.UseHttpsRedirection();

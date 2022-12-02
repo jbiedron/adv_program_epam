@@ -11,8 +11,9 @@ namespace CatalogService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    // [Authorize]
-    [Authorize(Roles = "Buyer")]
+   // [Authorize]
+    //[Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Buyer, Manager")]
     //   [Authorize(Policy = "BuyerRead")]
     //   [Authorize(Policy = "ManagerFull")]
     public class CategoriesController : ControllerBase
@@ -53,7 +54,8 @@ namespace CatalogService.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize(Policy = "ManagerFull")]
+        [Authorize(Roles = "Manager")]
+        //  [Authorize(Policy = "ManagerFull")]
         public async Task<ActionResult<int>> Create(CreateCategoryCommand command)
         {
             return await _mediator.Send(command);
@@ -66,7 +68,8 @@ namespace CatalogService.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize(Policy = "ManagerFull")]
+        [Authorize(Roles = "Manager")]
+        //    [Authorize(Policy = "ManagerFull")]
         public async Task<ActionResult> Update([FromRoute] int id, UpdateCategoryCommand command)
         {
             if (id != command.CategoryId)
@@ -84,7 +87,8 @@ namespace CatalogService.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize(Policy = "ManagerFull")]
+        [Authorize(Roles = "Manager")]
+        //    [Authorize(Policy = "ManagerFull")]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {
             await _mediator.Send(new DeleteCategoryCommand(id));
