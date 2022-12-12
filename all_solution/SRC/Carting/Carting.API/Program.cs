@@ -1,9 +1,11 @@
 using Carting.API.Extensions;
 using Carting.API.Messaging;
 using Carting.API.Messaging.Service;
+using Carting.API.Options;
 using CartingService.DAL.Repository;
 using CartingService.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using StackExchange.Redis;
@@ -15,7 +17,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddApiVersioningConfigured();
 
 /*
 builder.Services.AddApiVersioning(options =>
@@ -32,6 +33,10 @@ builder.Services.AddApiVersioning(options =>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
+
+/*
 builder.Services.AddSwaggerGen(options =>
 {
     // using System.Reflection;
@@ -56,6 +61,8 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+*/
+builder.Services.AddApiVersioningConfigured();
 
 
 /*
@@ -83,12 +90,23 @@ builder.Services.AddHostedService<ProductUpdateReceiver>();
 
 var app = builder.Build();
 
+app.UseSwagger();
+app.UseSwaggerUI(options => {
+    var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+    foreach (var description in provider.ApiVersionDescriptions)
+    {
+        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.ApiVersion.ToString());
+    }
+});
+
+/*
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+*/
 
 app.UseHttpsRedirection();
 
