@@ -1,16 +1,14 @@
 ﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Options;
-using Catalog.Messaging.Send.Options;
 using Newtonsoft.Json;
+using EventBusRabbitMQ;
+//using EventBusRabbitMQ.OLD.RabbitMQ.v2;
 
 namespace Catalog.Messaging.Send.Sender
 {
+    // TO REMOVE !!!!!! 
     public class ProductUpdateSender : IProductUpdateSender
     { 
 

@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="OLD\Catalog\v2\ProductPriceChangedIntegrationEvent.cs" />
+    <Compile Remove="OLD\Catalog\v3\ProductPriceChangedMessage.cs" />
+    <Compile Remove="OLD\Catalog\v3\ProductPriceChangedMessageHandler.cs" />
+    <Compile Remove="OLD\Core\v2\IEventBus.cs" />
+    <Compile Remove="OLD\Core\v2\IEventBusPersistentConnection.cs" />
+    <Compile Remove="OLD\Core\v2\IIntegrationEventHandler.cs" />
+    <Compile Remove="OLD\Core\v2\IntegrationEvent.cs" />
+    <Compile Remove="OLD\Core\v3\IMessage.cs" />
+    <Compile Remove="OLD\Core\v3\IMessageHandler.cs" />
+    <Compile Remove="OLD\RabbitMQ\v2\RabbitMqConfiguration.cs" />
+    <Compile Remove="OLD\RabbitMQ\v2\RabbitMQEventBus.cs" />
+    <Compile Remove="OLD\RabbitMQ\v2\RabbitMQEventBusv2.cs" />
+    <Compile Remove="OLD\RabbitMQ\v2\RabbitMQPersistentConnection.cs" />
+    <Compile Remove="OLD\RabbitMQ\v3\IMyBusClient.cs" />
+    <Compile Remove="OLD\RabbitMQ\v3\MyBusClient.cs" />
+    <Compile Remove="OLD\RabbitMQ\v3\SendMessage.cs" />
+    <Compile Remove="OLD\RabbitMQ\v3\SendMessageHandler .cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Polly" Version="7.2.3" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="OLD\Catalog\v2\" />
+    <Folder Include="OLD\Catalog\v3\" />
+    <Folder Include="OLD\Core\v2\" />
+    <Folder Include="OLD\Core\v3\" />
+    <Folder Include="OLD\RabbitMQ\v2\" />
+    <Folder Include="OLD\RabbitMQ\v3\" />
+    <Folder Include="OLD\RabbitMQ\v4\" />
+  </ItemGroup>
+
+</Project>

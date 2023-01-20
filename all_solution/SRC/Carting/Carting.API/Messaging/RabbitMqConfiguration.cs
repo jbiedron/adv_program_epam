@@ -1,5 +1,6 @@
 ﻿namespace Carting.API.Messaging
 {
+    // TODO: to remove?!
     public class RabbitMqConfiguration
     {
         public string Hostname { get; set; }

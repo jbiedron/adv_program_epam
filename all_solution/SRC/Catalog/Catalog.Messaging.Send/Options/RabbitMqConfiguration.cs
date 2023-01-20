@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
 namespace Catalog.Messaging.Send.Options
 {
+    
     public class RabbitMqConfiguration
     {
         public string Hostname { get; set; }
@@ -17,3 +19,4 @@ namespace Catalog.Messaging.Send.Options
         public string Password { get; set; }
     }
 }
+*/

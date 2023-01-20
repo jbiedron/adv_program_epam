@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Catalog.Messaging.Send.Sender
 { 
-    public interface IProductUpdateSender
+    public interface IProductUpdateSender               // TODO: add the delegate/event
     {
         void SendProduct(Product product);
     }

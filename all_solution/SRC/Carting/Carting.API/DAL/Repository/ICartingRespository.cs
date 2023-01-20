@@ -1,4 +1,5 @@
 ﻿using CartingService.DAL.Entities;
+using EventBusRabbitMQ;
 
 namespace CartingService.DAL.Repository
 {
@@ -11,5 +12,7 @@ namespace CartingService.DAL.Repository
         public Task<Cart> UpdateAsync(Cart toUpdate);
 
         public void UpdateCartItemsByExternalId(CartItem cartItem);
+
+        public void UpdateCartItemsByExternalId_v2(PriceChangedCommand updateCommand);
     }
 }

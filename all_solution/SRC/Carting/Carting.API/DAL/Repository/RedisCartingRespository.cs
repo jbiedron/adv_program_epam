@@ -1,4 +1,5 @@
 ﻿using CartingService.DAL.Entities;
+using EventBusRabbitMQ;
 using StackExchange.Redis;
 using System.Text.Json;
 
@@ -57,6 +58,7 @@ namespace CartingService.DAL.Repository
             return _redis.GetServer(endpoint.First());
         }
 
+        // TO REMOVE !!!!
         public async void UpdateCartItemsByExternalId(CartItem cartItem) 
         {
             // TODO: check how can i invoke couple of updates in single transaction in REDIS !!!!!!!!!!!!!!!!!!
@@ -76,6 +78,33 @@ namespace CartingService.DAL.Repository
             }
         }
 
+        public async void UpdateCartItemsByExternalId_v2(PriceChangedCommand updateCommand)
+        {
+            var server = GetServer();
+            var data = server.Keys();
+
+
+            // this is not efficient way to query data
+            var allKeys = data?.Select(k => k.ToString());
+            foreach (var key in allKeys)
+            {
+                var cart = await this.GetAsync(key);
+                await this.UpdateInBacketItems_V2(cart, updateCommand);
+            }
+        }
+
+        private async Task UpdateInBacketItems_V2(Cart cart, PriceChangedCommand updateCommand)
+        {
+            var itemsToUpdate = cart?.Items?.Where(i => i.ExternalId == updateCommand.ProductId + "").ToList();
+            itemsToUpdate.ForEach(i =>
+            {
+                i.Price = updateCommand.NewPrice;
+            });
+            await this.UpdateAsync(cart);
+        }
+
+
+        // TODO: to remove !!!
         private async Task UpdateInBacketItems(Cart cart, string externalId, string newName = null, decimal? newPrice = null, string newDescription = null, string newImageUrl = null)
         {
             var itemsToUpdate = cart?.Items?.Where(i => i.ExternalId == externalId).ToList();

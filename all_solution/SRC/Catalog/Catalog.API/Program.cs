@@ -3,17 +3,27 @@ using CatalogService.Extensions.DependencyInjection;
 using Infrastructure.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using Microsoft.Extensions.Configuration;
-using Catalog.Messaging.Send.Options;
 using Catalog.Messaging.Send.Sender;
-using Microsoft.IdentityModel.Tokens;
 using Catalog.API;
+using System.Text.Json.Serialization;
+using EventBusRabbitMQ;
+// using Catalog.App.EventBus;
+/*
+using EventBusRabbitMQ.OLD.RabbitMQ.v2;
+using EventBusRabbitMQ.OLD.Core.v2;
+using EventBusRabbitMQ.OLD;
+*/
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;         // fixes cirrular reference issues when serializing
+    });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -52,7 +62,32 @@ builder.Services.AddAPIServices();
 // rabbitmq - TODO: move it to extensions method!
 var serviceClientSettingsConfig = builder.Configuration.GetSection("RabbitMq");
 builder.Services.Configure<RabbitMqConfiguration>(serviceClientSettingsConfig);
+
+// event bus - v1
 builder.Services.AddTransient<IProductUpdateSender, ProductUpdateSender>();
+
+// events - final version
+builder.Services.AddTransient<ICommandPublisher, RabbitCommandPublisher>();
+
+/*
+// evenbus - v2
+// builder.Services.AddSingleton<IEventBus, RabbitMQEventBus>();
+builder.Services.AddSingleton<IEventBus, RabbitMQEventBusv2>();
+
+builder.Services.AddSingleton<IEventBusPersistentConnection, RabbitMQPersistentConnection>();
+builder.Services.AddSingleton<IProductPriceUpdateSender, ProductPriceUpdateSender>();
+*/
+
+// add subscriptions as singleton
+
+// event bus - v3
+
+
+// event bus - LATEST !!!!
+// builder.Services.AddSingleton<ICommandSubscriber, RabbitCommandSubscriber>();
+
+var rabbitmqConfig = builder.Configuration.GetSection("rabbitmq");
+builder.Services.Configure<RabbitMqConfiguration>(rabbitmqConfig);
 
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", opt =>
