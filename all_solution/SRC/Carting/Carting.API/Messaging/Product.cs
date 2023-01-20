@@ -1,5 +1,7 @@
 ﻿namespace Carting.API.Messaging
 {
+
+    // TODO: to remove?
     public class ProductModel
     {
         public string ProductId { get; set; }

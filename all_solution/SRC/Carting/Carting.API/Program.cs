@@ -4,15 +4,36 @@ using Carting.API.Messaging.Service;
 using Carting.API.Options;
 using CartingService.DAL.Repository;
 using CartingService.Service;
+using EventBusRabbitMQ;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using StackExchange.Redis;
 using System.Reflection;
 
+/*
+using EventBusRabbitMQ.OLD.RabbitMQ.v2;
+using EventBusRabbitMQ.OLD.Core.v2;
+using EventBusRabbitMQ.OLD.Catalog.v2;
+*/
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Host.UseDefaultServiceProvider(o =>
+{
+    o.ValidateOnBuild = true;
+    o.ValidateScopes = true;
+});
+
+/*
+var builder = Host.CreateDefaultBuilder(args)
+    .ConfigureWebHostDefaults(webBuilder => { })
+    .UseDefaultServiceProvider((context, options) => {
+        options.ValidateOnBuild = true;
+    });
+*/
 
 // Add services to the container.
 
@@ -35,6 +56,7 @@ builder.Services.AddApiVersioning(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
+
 
 /*
 builder.Services.AddSwaggerGen(options =>
@@ -83,12 +105,58 @@ builder.Services.AddSingleton<ConnectionMultiplexer>(sp =>
 builder.Services.AddTransient<ICartingRespository, RedisCartingRespository>();
 builder.Services.AddTransient<CartService>();
 
+
+
 // bg service for event receiver
+
+/*  TODO: check wy config does not load properly? empty!
 var serviceClientSettingsConfig = builder.Configuration.GetSection("RabbitMq");
-builder.Services.Configure<RabbitMqConfiguration>(serviceClientSettingsConfig);
+builder.Services.Configure<EventBusRabbitMQ.RabbitMQ.RabbitMqConfiguration>(serviceClientSettingsConfig);
 builder.Services.AddHostedService<ProductUpdateReceiver>();
 
+*/
+/*
+// builder.Services.AddSingleton<IEventBus, RabbitMQEventBus>();
+builder.Services.AddSingleton<IEventBus, RabbitMQEventBusv2>();
+builder.Services.AddSingleton<IEventBusPersistentConnection, RabbitMQPersistentConnection>();
+
+void ConfigureEventBus(IApplicationBuilder app)
+{
+    var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+    eventBus.Subscribe<ProductPriceChangedIntegrationEvent>();
+}
+*/
+/*
+eventBus.Subscribe<ProductPriceChangedIntegrationEvent, ProductPriceChangedIntegrationEventHandler>();
+eventBus.Subscribe<OrderStartedIntegrationEvent, OrderStartedIntegrationEventHandler>();
+8/
+
+}
+
+// event bus - v2
+
+/*
+var serviceClientSettingsConfig = builder.Configuration.GetSection("RabbitMq");
+builder.Services.Configure<EventBusRabbitMQ.RabbitMQ.RabbitMqConfiguration>(serviceClientSettingsConfig);
+*/
+
+// service bus - v2
+// builder.Services.AddSingleton<IEventBus, RabbitMQEventBus>();
+/*
+builder.Services.AddSingleton<IEventBus, RabbitMQEventBusv2>();
+
+builder.Services.AddSingleton<IEventBusPersistentConnection, RabbitMQPersistentConnection>();
+*/
+
+// builder.Services.AddSingleton<IProductPriceUpdateSender, ProductPriceUpdateSender>();
+
+// event bus - LAST VERSION !!!!
+
+builder.Services.AddTransient<ICommandSubscriber, ProductPriceUpdatedHandler>();
+
 var app = builder.Build();
+// this is dirty way to initialize singleton and add event handlers on the client side
+app.Services.GetService<ICommandSubscriber>();
 
 app.UseSwagger();
 app.UseSwaggerUI(options => {
@@ -114,4 +182,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// ads subscribers to event
+// ConfigureEventBus(app);
+
 app.Run();
+
